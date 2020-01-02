@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"time"
+
+	digs "github.com/niconosenzo/retroclock/vars"
 )
 
 var clock = [8][5]string{}
@@ -23,30 +25,30 @@ func main() {
 
 		// for the hour (clock[0] and clock[1])
 
-		clock[0] = Digits[hours/10]
-		clock[1] = retroclock.Digits[hours%10]
+		clock[0] = digs.Digits[hours/10]
+		clock[1] = digs.Digits[hours%10]
 
 		// for the minutes (clock[3] and clock[4])
 
-		clock[3] = retroclock.Digits[minutes/10]
-		clock[4] = retroclock.Digits[minutes%10]
+		clock[3] = digs.Digits[minutes/10]
+		clock[4] = digs.Digits[minutes%10]
 
 		// for the seconds (clock[6] and clock[7])
 
-		clock[6] = clockvars.Digits[seconds/10]
-		clock[7] = clockvars.Digits[seconds%10]
+		clock[6] = digs.Digits[seconds/10]
+		clock[7] = digs.Digits[seconds%10]
 
 		// blink separators depending each 2 secs (depending if seconds are odd or given)
 		if seconds%2 == 0 {
 			// hh:mm separator
-			clock[2] = clockvars.Separator[0]
+			clock[2] = digs.Separator[0]
 			// mm:ss separator
-			clock[5] = clockvars.Separator[0]
+			clock[5] = digs.Separator[0]
 		} else {
 			// hh:mm separator
-			clock[2] = clockvars.Separator[1]
+			clock[2] = digs.Separator[1]
 			// mm:ss separator
-			clock[5] = clockvars.Separator[1]
+			clock[5] = digs.Separator[1]
 		}
 
 		// fmt.Println(hours, minutes, seconds)
